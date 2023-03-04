@@ -14,6 +14,62 @@
     <title>Library</title>
   </head>
   <body>
+    <header>
+      <nav class="navbar">
+        <div class="container">
+          <h1>Library</h1>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+        <div class="add-book">
+          <button class="btn add">Add Book</button>
+        </div>
+      </div>
+    </main>
+    <div class="modal">
+      <div>
+        <h3>Add New Book</h3>
+        <button class="btn hide">X</button>
+      </div>
+      <form action="">
+        <div class="form-row">
+          <label for="title">Title</label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            placeholder="Book title"
+            required
+          />
+        </div>
+        <div class="form-row">
+          <label for="author">Author</label>
+          <input
+            type="text"
+            name="author"
+            id="author"
+            placeholder="Book author"
+            required
+          />
+        </div>
+        <div class="form-row">
+          <label for="pages">Pages</label>
+          <input
+            type="number"
+            name="pages"
+            id="pages"
+            placeholder="Number of pages"
+            required
+          />
+        </div>
+        <div class="form-row">
+          <button type="submit" class="btn">Add</button>
+        </div>
+      </form>
+    </div>
+    <div class="blur-bg"></div>
     <script src="script.js"></script>
   </body>
 </html>

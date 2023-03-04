@@ -3,8 +3,99 @@
   margin: 0;
   box-sizing: border-box;
 }
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
 body {
   font-size: 16px;
   background-color: #eee;
   font-family: "Poppins", sans-serif;
+  position: relative;
+}
+.container {
+  width: 80%;
+  max-width: 600px;
+  margin: auto;
+}
+header {
+  width: 100%;
+}
+.navbar {
+  background-color: white;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.add-book {
+  margin-top: 20px;
+}
+.btn {
+  border: none;
+  outline: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+.add {
+  background-color: #16a34a;
+  color: #fff;
+  padding: 8px 24px;
+  border-radius: 5px;
+}
+.modal {
+  display: none;
+  width: 80%;
+  max-width: 400px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+.modal > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hide {
+  background-color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+}
+.form-row {
+  margin-top: 10px;
+}
+.form-row label {
+  display: block;
+}
+.form-row input {
+  width: 100%;
+  border: 1px solid #ccc;
+  outline: none;
+  border-radius: 5px;
+  font-family: inherit;
+  padding: 5px 10px;
+}
+.form-row input:focus {
+  border-color: rgb(109, 200, 253);
+}
+.form-row button {
+  background-color: #16a34a;
+  color: #fff;
+  padding: 4px 16px;
+  border-radius: 5px;
+}
+.blur-bg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(15px);
 }
