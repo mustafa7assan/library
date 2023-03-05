@@ -44,6 +44,7 @@ const ShowBooks = function () {
     // Add Event Listeners to buttons
     booksContainer.insertAdjacentHTML("afterbegin", div);
     document.querySelector(".un-read").addEventListener("click", readToggle);
+    document.querySelector(".delete").addEventListener("click", deleteBook);
   }
 };
 
@@ -62,6 +63,12 @@ const readToggle = function (e) {
   const index = Number(e.target.dataset.index);
   const book = library[index];
   book.read = !book.read;
+  ShowBooks();
+};
+// Delete book from library
+const deleteBook = function (e) {
+  const index = Number(e.target.dataset.index);
+  library.splice(index, 1);
   ShowBooks();
 };
 // Modal
