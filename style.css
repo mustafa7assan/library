@@ -88,6 +88,12 @@ header {
   padding: 4px 16px;
   border-radius: 5px;
 }
+.checkbox-input label {
+  display: inline;
+}
+.checkbox-input input {
+  width: auto;
+}
 .blur-bg {
   display: none;
   position: fixed;
@@ -126,7 +132,7 @@ header {
   border-radius: 5px;
 }
 .book-info {
-  flex: 3 !important;
+  flex: 2 !important;
   display: flex;
   flex-direction: column;
 }
