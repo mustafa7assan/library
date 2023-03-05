@@ -179,6 +179,20 @@ header {
 .unread {
   background-color: #86efac;
 }
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+footer a {
+  text-decoration: none;
+  color: inherit;
+}
 
 @media only screen and (max-width: 480px) {
   .container {

@@ -28,7 +28,7 @@ const ShowBooks = function () {
     <div class="book-info">
       <p class="title">${book.title}</p>
       <p class="author">By: ${book.author}</p>
-      <p class="pages">${book.pages} page</p>
+      <p class="pages">Pages: ${book.pages}</p>
       <div class="button">
         <button data-index=${i} class="btn edit">Edit</button>
         <button data-index=${i}  class="btn delete">Delete</button>
@@ -45,10 +45,11 @@ const ShowBooks = function () {
     booksContainer.insertAdjacentHTML("afterbegin", div);
     document.querySelector(".un-read").addEventListener("click", readToggle);
     document.querySelector(".delete").addEventListener("click", deleteBook);
+    document.querySelector(".edit").addEventListener("click", editBookForm);
   }
 };
-
-const getBookData = function (e) {
+// Add New Book
+const addBook = function (e) {
   e.preventDefault();
   const title = document.getElementById("title").value;
   const author = document.getElementById("author").value;
@@ -56,7 +57,25 @@ const getBookData = function (e) {
   const read = document.getElementById("read").checked;
   addBookToLibrary({ title, author, pages, read });
   hideModal();
-  addBookForm.reset();
+  ShowBooks();
+  form.reset();
+};
+// Edit existing book
+const editBook = function (e, index) {
+  e.preventDefault();
+  const title = document.getElementById("title").value;
+  const author = document.getElementById("author").value;
+  const pages = Number(document.getElementById("pages").value);
+  const read = document.getElementById("read").checked;
+  // Update Book data
+  const book = library[Number(index)];
+  book.title = title;
+  book.author = author;
+  book.pages = pages;
+  book.read = read;
+  hideModal();
+  ShowBooks();
+  form.reset();
 };
 // Toggle book from read to unread and versa visa
 const readToggle = function (e) {
@@ -71,8 +90,28 @@ const deleteBook = function (e) {
   library.splice(index, 1);
   ShowBooks();
 };
+// Show edit form with book data
+const editBookForm = function (e) {
+  const index = Number(e.target.dataset.index);
+  const book = library[index];
+  document.getElementById("title").value = book.title;
+  document.getElementById("author").value = book.author;
+  document.getElementById("pages").value = book.pages;
+  document.getElementById("read").checked = book.read;
+  showModal("edit", index);
+};
+//
 // Modal
-const showModal = function () {
+const showModal = function (mode, index) {
+  if (mode === "add") {
+    modalTitle.textContent = "Add New Book";
+    submitButton.textContent = "Add";
+    form.reset();
+  } else if (mode === "edit") {
+    modalTitle.textContent = "Edit Book";
+    submitButton.dataset.index = index;
+    submitButton.textContent = "Edit";
+  }
   blurBg.style.display = "block";
   modal.style.display = "block";
 };
@@ -85,9 +124,17 @@ const hideModal = function () {
 const addButton = document.querySelector(".add");
 const hideButton = document.querySelector(".hide");
 const modal = document.querySelector(".modal");
+const modalTitle = document.querySelector(".modal-title");
 const blurBg = document.querySelector(".blur-bg");
-const addBookForm = document.querySelector(".add-book-form");
+const form = document.querySelector(".add-book-form");
+const submitButton = document.querySelector(".form-row button");
 // Events Listener
-addButton.addEventListener("click", showModal);
+addButton.addEventListener("click", () => showModal("add", undefined));
 hideButton.addEventListener("click", hideModal);
-addBookForm.addEventListener("submit", getBookData);
+submitButton.addEventListener("click", (e) => {
+  if (e.target.textContent === "Add") {
+    addBook(e);
+  } else if (e.target.textContent === "Edit") {
+    editBook(e, e.target.dataset.index);
+  }
+});

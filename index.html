@@ -10,6 +10,11 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+    <script
+      src="https://kit.fontawesome.com/f2a80e826c.js"
+      crossorigin="anonymous"
+      defer
+    ></script>
     <link rel="stylesheet" href="style.css" />
     <title>Library</title>
   </head>
@@ -29,9 +34,14 @@
         <div class="books"></div>
       </div>
     </main>
+    <footer>
+      <a href="https://github.com/mustafa7assan"
+        ><i class="fa-brands fa-github"></i> Mustafa Hassan</a
+      >
+    </footer>
     <div class="modal">
       <div>
-        <h3>Add New Book</h3>
+        <h3 class="modal-title"></h3>
         <button class="btn hide">X</button>
       </div>
       <form action="" class="add-book-form">
@@ -70,7 +80,7 @@
           <input type="checkbox" name="read" id="read" />
         </div>
         <div class="form-row">
-          <button type="submit" class="btn">Add</button>
+          <button type="submit" class="btn" data-index=""></button>
         </div>
       </form>
     </div>
