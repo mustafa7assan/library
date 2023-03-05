@@ -10,8 +10,35 @@ const library = [];
 // Add book to library
 const addBookToLibrary = function (book) {
   library.push(book);
+  ShowBooks();
 };
 
+const ShowBooks = function () {
+  const booksContainer = document.querySelector(".books");
+  booksContainer.innerHTML = "";
+  for (const book of library) {
+    const div = `
+    <div class="book-card">
+    <div class="book-cover">
+      <img src="img/book-cover.jpg" alt="book cover" />
+    </div>
+    <div class="book-info">
+      <p class="title">${book.title}</p>
+      <p class="author">By: ${book.author}</p>
+      <p class="pages">${book.pages} page</p>
+      <div class="button">
+        <button class="btn edit">Edit</button>
+        <button class="btn delete">Delete</button>
+      </div>
+    </div>
+    <div class="book-read">
+      <button class="btn read">Read</button>
+    </div>
+  </div>
+    `;
+    booksContainer.insertAdjacentHTML("afterbegin", div);
+  }
+};
 // Dom Function
 const showModal = function () {
   blurBg.style.display = "block";
@@ -36,4 +63,5 @@ addBookForm.addEventListener("submit", (e) => {
   const pages = Number(document.getElementById("pages").value);
   addBookToLibrary({ title, author, pages });
   hideModal();
+  addBookForm.reset();
 });
